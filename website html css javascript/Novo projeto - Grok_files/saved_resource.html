@@ -1,0 +1,305 @@
+
+<!-- saved from url=(0012)about:srcdoc -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>
+const topWindowOrigin = 'https://grok.com';
+
+function logErrorMessage(message) {
+  const messageStr = JSON.stringify({type: 'console_message', level: 'error', message});
+  window.top.postMessage(messageStr, topWindowOrigin);
+};
+
+function logWarning(message) {
+  const messageStr = JSON.stringify({type: 'console_message', level: 'warn', message});
+  window.top.postMessage(messageStr, topWindowOrigin);
+}
+
+function logMessage(message) {
+  const messageStr = JSON.stringify({type: 'console_message', level: 'log', message});
+  window.top.postMessage(messageStr, topWindowOrigin);
+}
+
+const _windowOnerror = window.onerror;
+window.onerror = (...args) => {
+  logErrorMessage(args[0]);
+  return _windowOnerror ? _windowOnerror(...args) : undefined;
+};
+
+const _windowOnunhandledrejection = window.onunhandledrejection;
+window.onunhandledrejection = function(event) {
+  let message = 'Error: onunhandledrejection';
+  if (event && event.reason && event.reason.message) {
+    message = event.reason.message;
+  }
+
+  logErrorMessage(message);
+  return _windowOnunhandledrejection ? _windowOnunhandledrejection(...args) : undefined;
+};
+
+const _consoleError = console.error;
+console.error = function(...args) {
+  if (args[0] instanceof Error) {
+    logErrorMessage(args[0].message);
+  } else {
+    logErrorMessage(...args);
+  }
+  return _consoleError(...args);
+};
+
+const _consoleLog = console.log;
+console.log = function(...args) {
+  logMessage(...args);
+  return _consoleLog(...args);
+};
+
+const _consoleWarning = console.warn;
+console.warn = function(...args) {
+  logWarning(...args);
+  return _consoleWarning(...args);
+};
+
+</script>
+<script>
+  document.addEventListener('click', function(event) {
+    const anchor = event.target.closest('a');
+    if (anchor && anchor.getAttribute('href').startsWith('#')) {
+      event.preventDefault();
+      const targetId = anchor.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+</script><script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script>
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PIXELPRONTOWEB - Criação de sites modernos com inteligência artificial para clínicas, lojas, salões e profissionais liberais.">
+    <meta name="keywords" content="criação de sites, inteligência artificial, sites para empresas, site responsivo">
+    <meta name="author" content="PIXELPRONTOWEB">
+    <title>PIXELPRONTOWEB - Sites com Inteligência Artificial</title>
+    <link href="https://artifacts.grokusercontent.com/dist/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800" style="margin: 0px;">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-50 to-white min-h-screen flex items-center justify-center py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Seu site pronto, rápido e com inteligência artificial
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Transforme sua presença online com a PIXELPRONTOWEB
+            </p>
+            <a href="https://artifacts.grokusercontent.com/#contato" class="inline-block bg-green-500 text-white font-semibold py-3 px-8 rounded-full hover:bg-green-600 transition animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Solicite um orçamento
+            </a>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Sobre a PIXELPRONTOWEB
+            </h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Na PIXELPRONTOWEB, criamos sites modernos e funcionais utilizando inteligência artificial para entregar resultados rápidos, acessíveis e personalizados para empresas de todos os tamanhos. De clínicas a lojas virtuais, nosso foco é acelerar sua presença digital com qualidade e inovação.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfólio Section -->
+    <section id="portfolio" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Nossos Projetos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <img src="https://via.placeholder.com/400x300" alt="Projeto 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Clínica Médica</h3>
+                        <p class="text-gray-600">Site institucional moderno com agendamento online.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <img src="https://via.placeholder.com/400x300" alt="Projeto 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Loja Virtual</h3>
+                        <p class="text-gray-600">E-commerce otimizado para vendas online.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <img src="https://via.placeholder.com/400x300" alt="Projeto 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold">Salão de Beleza</h3>
+                        <p class="text-gray-600">Landing page elegante com foco em conversão.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Nossos Serviços
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <i class="fas fa-globe text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Site Institucional</h3>
+                    <p class="text-gray-600">Apresente sua empresa com um site profissional e responsivo.</p>
+                </div>
+                <div class="text-center animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <i class="fas fa-shopping-cart text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Loja Virtual</h3>
+                    <p class="text-gray-600">Venda seus produtos online com uma plataforma otimizada.</p>
+                </div>
+                <div class="text-center animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <i class="fas fa-file-alt text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold">Landing Pages</h3>
+                    <p class="text-gray-600">Páginas focadas em conversão para campanhas específicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                O que nossos clientes dizem
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <p class="text-gray-600 italic">"A PIXELPRONTOWEB entregou um site incrível em tempo recorde! Superou nossas expectativas."</p>
+                    <p class="mt-4 font-semibold">Ana Silva, Clínica Saúde Total</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                    <p class="text-gray-600 italic">"O processo foi rápido, o preço justo e o resultado foi um site moderno e funcional."</p>
+                    <p class="mt-4 font-semibold">João Mendes, Loja Virtual Moda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12 animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                Entre em Contato
+            </h2>
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <div class="space-y-6">
+                    <div class="animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <label for="nome" class="block text-gray-700 font-semibold">Nome</label>
+                        <input type="text" id="nome" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Seu nome">
+                    </div>
+                    <div class="animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <label for="email" class="block text-gray-700 font-semibold">E-mail</label>
+                        <input type="email" id="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Seu e-mail">
+                    </div>
+                    <div class="animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <label for="telefone" class="block text-gray-700 font-semibold">Telefone</label>
+                        <input type="tel" id="telefone" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Seu telefone">
+                    </div>
+                    <div class="animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        <label for="tipo-site" class="block text-gray-700 font-semibold">Tipo de Site</label>
+                        <select id="tipo-site" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">Selecione uma opção</option>
+                            <option value="institucional">Site Institucional</option>
+                            <option value="loja">Loja Virtual</option>
+                            <option value="landing">Landing Page</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-green-500 text-white font-semibold py-3 rounded-lg hover:bg-green-600 transition animate-on-scroll" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold mb-4">PIXELPRONTOWEB</h3>
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://wa.me/5511999999999" target="_blank" class="text-green-400 hover:text-green-300">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+                <a href="https://instagram.com/pixelprontoweb" target="_blank" class="text-green-400 hover:text-green-300">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://facebook.com/pixelprontoweb" target="_blank" class="text-green-400 hover:text-green-300">
+                    <i class="fab fa-facebook text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-400">contato@pixelprontoweb.com | (11) 99999-9999</p>
+            <p class="text-gray-400 mt-2">© 2025 PIXELPRONTOWEB. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
+            gsap.from(element, {
+                opacity: 0,
+                y: 20,
+                duration: 0.6,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    </script>
+
+</body></html>

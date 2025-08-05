@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelProntoWeb - Criação de Sites com IA para Pequenos Negócios</title>
+    <meta name="description" content="Criação de sites rápidos e acessíveis com inteligência artificial para padarias, mercearias, consultórios odontológicos e outros comércios locais.">
+    <meta name="keywords" content="criação de site para padaria, site para consultório odontológico, site para mercearia, site para pequenos negócios, criação de site com IA">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pixel-blue': '#2563eb',
+                        'pixel-orange': '#f97316',
+                        'pixel-green': '#22c55e',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(34, 197, 94, 0.8) 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-pixel-blue text-white p-2 rounded-lg mr-2">
+                    <i class="fas fa-robot text-xl"></i>
+                </div>
+                <a href="#" class="text-2xl font-bold text-pixel-blue">Pixel<span class="text-pixel-orange">Pronto</span>Web</a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium hover:text-pixel-blue transition">Início</a>
+                <a href="#services" class="font-medium hover:text-pixel-blue transition">Serviços</a>
+                <a href="#how-it-works" class="font-medium hover:text-pixel-blue transition">Como Funciona</a>
+                <a href="#portfolio" class="font-medium hover:text-pixel-blue transition">Portfólio</a>
+                <a href="#testimonials" class="font-medium hover:text-pixel-blue transition">Depoimentos</a>
+            </nav>
+            
+            <a href="#contact" class="hidden md:block bg-pixel-blue hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                Peça seu site
+            </a>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="font-medium hover:text-pixel-blue transition py-2">Início</a>
+                <a href="#services" class="font-medium hover:text-pixel-blue transition py-2">Serviços</a>
+                <a href="#how-it-works" class="font-medium hover:text-pixel-blue transition py-2">Como Funciona</a>
+                <a href="#portfolio" class="font-medium hover:text-pixel-blue transition py-2">Portfólio</a>
+                <a href="#testimonials" class="font-medium hover:text-pixel-blue transition py-2">Depoimentos</a>
+                <a href="#contact" class="bg-pixel-blue hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition text-center">
+                    Peça seu site
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Seu negócio merece um site profissional em tempo recorde!</h1>
+                <p class="text-xl mb-8">Com nossa inteligência artificial, criamos sites incríveis para seu comércio local em apenas 48 horas. Sem complicações, sem dor de cabeça.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-white text-pixel-blue hover:bg-gray-100 px-8 py-3 rounded-lg font-bold text-center transition">
+                        Peça seu site agora
+                    </a>
+                    <a href="#how-it-works" class="border-2 border-white hover:bg-white hover:text-pixel-blue px-8 py-3 rounded-lg font-bold text-center transition">
+                        Como funciona
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-6 w-full max-w-md">
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="text-sm">www.seunegocio.com.br</div>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 text-gray-800">
+                            <div class="animate-pulse flex space-x-4 mb-4">
+                                <div class="flex-1 space-y-4 py-1">
+                                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="space-y-2">
+                                        <div class="h-4 bg-gray-200 rounded"></div>
+                                        <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center py-8">
+                                <i class="fas fa-robot text-5xl text-pixel-blue mb-4"></i>
+                                <p class="font-bold">Seu site está sendo criado pela IA!</p>
+                                <p class="text-sm mt-2">Em breve você terá um site profissional</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-pixel-orange text-white px-4 py-2 rounded-lg shadow-lg">
+                        <i class="fas fa-bolt mr-2"></i>Pronto em 48h!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <div class="bg-gray-50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-pixel-green text-2xl mr-2"></i>
+                    <span class="font-medium">+150 sites criados</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-clock text-pixel-blue text-2xl mr-2"></i>
+                    <span class="font-medium">Pronto em 48 horas</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-headset text-pixel-orange text-2xl mr-2"></i>
+                    <span class="font-medium">Suporte 7 dias</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sites feitos sob medida para seu negócio</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Nossa inteligência artificial cria sites perfeitos para diferentes tipos de comércios locais</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 feature-card transition duration-300">
+                    <div class="bg-pixel-blue/10 text-pixel-blue w-14 h-14 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-bread-slice text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Padarias</h3>
+                    <p class="text-gray-600">Mostre seus pães, bolos e salgados frescos todos os dias. Atualização fácil do cardápio.</p>
+                    <div class="mt-4">
+                        <span class="bg-pixel-green/10 text-pixel-green text-sm px-3 py-1 rounded-full">Mais pedido</span>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 feature-card transition duration-300">
+                    <div class="bg-pixel-blue/10 text-pixel-blue w-14 h-14 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-store text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mercearias</h3>
+                    <p class="text-gray-600">Destaque promoções, aceite pedidos online e mostre seus diferenciais para o bairro.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 feature-card transition duration-300">
+                    <div class="bg-pixel-blue/10 text-pixel-blue w-14 h-14 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-tooth text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Consultórios</h3>
+                    <p class="text-gray-600">Agendamento online, informações sobre tratamentos e perfil profissional.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 feature-card transition duration-300">
+                    <div class="bg-pixel-blue/10 text-pixel-blue w-14 h-14 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cut text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Outros comércios</h3>
+                    <p class="text-gray-600">Barbearias, pet shops, lojas de roupas - qualquer negócio merece um site profissional.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-block bg-pixel-orange hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-bold transition">
+                    Quero meu site agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Como funciona? Simples e rápido!</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Em apenas 4 passos você terá um site profissional para seu negócio</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                    <div class="bg-pixel-blue text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-3">Você nos conta sobre seu negócio</h3>
+                    <p class="text-gray-600">Responda um rápido questionário sobre seu comércio, produtos e preferências.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                    <div class="bg-pixel-blue text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-3">Nossa IA cria seu site</h3>
+                    <p class="text-gray-600">Nossa inteligência artificial desenvolve um site personalizado em poucas horas.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                    <div class="bg-pixel-blue text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-3">Revisão e ajustes</h3>
+                    <p class="text-gray-600">Você avalia e pede ajustes, tudo de forma simples e rápida.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm text-center">
+                    <div class="bg-pixel-blue text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-3">Seu site no ar!</h3>
+                    <p class="text-gray-600">Pronto! Seu site está no ar em até 48 horas, mostrando seu negócio para o mundo.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h3 class="text-2xl font-bold mb-4">Por que usar IA para criar seu site?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pixel-green mt-1 mr-3"></i>
+                                <span><strong>Velocidade:</strong> Pronto em dias, não em semanas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pixel-green mt-1 mr-3"></i>
+                                <span><strong>Custo-benefício:</strong> Até 60% mais barato que métodos tradicionais</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pixel-green mt-1 mr-3"></i>
+                                <span><strong>Qualidade:</strong> Design profissional adaptado ao seu negócio</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pixel-green mt-1 mr-3"></i>
+                                <span><strong>Simplicidade:</strong> Você não precisa entender de tecnologia</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 bg-pixel-blue/10 flex items-center justify-center p-8">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Padeiro sorrindo" class="rounded-lg shadow-lg w-full max-w-md">
+                            <div class="absolute -bottom-4 -right-4 bg-pixel-orange text-white px-4 py-2 rounded-lg shadow-lg">
+                                <i class="fas fa-thumbs-up mr-2"></i>Clientes satisfeitos!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Alguns dos nossos trabalhos</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Veja exemplos de sites que criamos para negócios como o seu</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-gradient-to-r from-pixel-blue to-pixel-green flex items-center justify-center">
+                        <div class="text-center text-white p-4">
+                            <i class="fas fa-bread-slice text-5xl mb-3"></i>
+                            <h3 class="text-xl font-bold">Padaria Pão Quentinho</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Site com cardápio online, horário de funcionamento e promoções semanais.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-pixel-blue font-medium">www.paoquentinho.com.br</span>
+                            <a href="#" class="text-pixel-orange hover:text-orange-600 font-medium">Ver detalhes →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-gradient-to-r from-pixel-green to-pixel-blue flex items-center justify-center">
+                        <div class="text-center text-white p-4">
+                            <i class="fas fa-tooth text-5xl mb-3"></i>
+                            <h3 class="text-xl font-bold">Clínica Sorriso Perfeito</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Site com agendamento online, informações sobre tratamentos e equipe.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-pixel-blue font-medium">www.sorrisoperfeito.com.br</span>
+                            <a href="#" class="text-pixel-orange hover:text-orange-600 font-medium">Ver detalhes →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-48 bg-gradient-to-r from-pixel-orange to-pixel-blue flex items-center justify-center">
+                        <div class="text-center text-white p-4">
+                            <i class="fas fa-store text-5xl mb-3"></i>
+                            <h3 class="text-xl font-bold">Mercado do Bairro</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Site com catálogo de produtos, pedidos online e promoções do mês.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-pixel-blue font-medium">www.mercadodobairro.com.br</span>
+                            <a href="#" class="text-pixel-orange hover:text-orange-600 font-medium">Ver detalhes →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#contact" class="inline-block bg-pixel-blue hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition">
+                    Quero um site como esses
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">O que nossos clientes dizem</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Donos de negócios locais que já estão com seus sites no ar</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pixel-blue/10 text-pixel-blue flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Carlos, Padaria Doce Manhã</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Não sabia nada de internet e em 2 dias já tinha meu site lindo! As clientes agora olham o cardápio pelo celular antes de vir. Meus bolos estão fazendo sucesso!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pixel-blue/10 text-pixel-blue flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Dra. Ana, Clínica Dental</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Finalmente tenho um site profissional! Os pacientes conseguem agendar horários online e minha agenda nunca esteve tão cheia. Valeu cada centavo!"</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pixel-blue/10 text-pixel-blue flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">João, Mercado Vizinhança</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Coloquei as promoções no site e em uma semana aumentei as vendas em 30%. O pessoal do bairro adorou poder ver os preços antes de vir comprar."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-pixel-blue to-pixel-green text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para levar seu negócio para o digital?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Em apenas 48 horas você pode ter um site profissional trabalhando para o seu comércio local</p>
+            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-pixel-blue px-8 py-3 rounded-lg font-bold text-lg transition">
+                Peça seu site agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Vamos criar seu site!</h2>
+                    <p class="text-xl text-gray-600">Preencha o formulário abaixo e em breve entraremos em contato</p>
+                </div>
+                
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Seu nome*</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label for="business" class="block text-gray-700 font-medium mb-2">Seu negócio*</label>
+                        <input type="text" id="business" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">E-mail*</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent" required>
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-medium mb-2">WhatsApp*</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent" required>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="business-type" class="block text-gray-700 font-medium mb-2">Tipo de negócio*</label>
+                        <select id="business-type" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent" required>
+                            <option value="">Selecione...</option>
+                            <option value="padaria">Padaria</option>
+                            <option value="mercearia">Mercearia</option>
+                            <option value="consultorio">Consultório Odontológico</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Algo mais que queira nos contar?</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pixel-blue focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-pixel-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition">
+                            Enviar solicitação
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pixel-blue text-white p-2 rounded-lg mr-2">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="text-2xl font-bold">Pixel<span class="text-pixel-orange">Pronto</span>Web</div>
+                    </div>
+                    <p class="text-gray-400">Criação de sites rápidos e acessíveis com inteligência artificial para comércios locais.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Início</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Serviços</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition">Como Funciona</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition">Portfólio</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Serviços</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Site para Padaria</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Site para Mercearia</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Site para Consultório</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Outros Comércios</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contato</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-pixel-orange mr-3"></i>
+                            <span class="text-gray-400">contato@pixelprontoweb.com.br</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-pixel-orange mr-3"></i>
+                            <span class="text-gray-400">(11) 98765-4321</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp text-pixel-orange mr-3"></i>
+                            <span class="text-gray-400">(11) 98765-4321</span>
+                        </li>
+                        <li class="flex items-center mt-4">
+                            <a href="#" class="text-gray-400 hover:text-white mr-4"><i class="fab fa-facebook-f text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white mr-4"><i class="fab fa-instagram text-xl"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 PixelProntoWeb. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5521999391749" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would normally send the form data to your server
+                // For this example, we'll just show an alert
+                alert('Obrigado pelo seu interesse! Entraremos em contato em breve para criar seu site.');
+                form.reset();
+                
+                // Scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
